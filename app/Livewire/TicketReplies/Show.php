@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Livewire\TicketReplies;
+
+use App\Livewire\Forms\TicketReplyForm;
+use App\Models\TicketReply;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+
+class Show extends Component
+{
+    public TicketReplyForm $form;
+
+    public function mount(TicketReply $ticketReply)
+    {
+        $this->form->setTicketReplyModel($ticketReply);
+    }
+
+    #[Layout('layouts.app')]
+    public function render()
+    {
+        return view('livewire.ticket-reply.show', ['ticketReply' => $this->form->ticketReplyModel]);
+    }
+}
